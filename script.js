@@ -10,20 +10,20 @@ const loader = document.getElementById('loader')
 let apiQuotes = [];
 
 // Show Loading
-function loading() {
+function showLoadingSpinner() {
     loader.hidden = false;
     quoteContainer.hidden = true;
 }
 
 // Hide Loading
-function loadComplete() {
+function removeLoadingSpinner() {
     quoteContainer.hidden = false;
     loader.hidden = true;
 }
 
 // Show new quote
 function newQuote() {
-    loading();
+    showLoadingSpinner();
     // Pick a random quote from array API
     const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
     authorText.textContent = quote.author;
@@ -36,7 +36,7 @@ function newQuote() {
     }
     // Set Quote, hide loader
     quoteText.textContent = quote.text;
-    loadComplete();
+    removeLoadingSpinner();
 }
 
 async function getQuotes() {
